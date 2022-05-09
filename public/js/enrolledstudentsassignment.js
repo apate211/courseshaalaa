@@ -7,7 +7,7 @@
     jQuery(document).ready(function() {
         var requestConfig = {
             method: 'Get',
-            url: '/student/ass_sub_bystudents/teacherusername/coursename/id',
+            url: `/student/${ass_sub_bystudents}/${teacherusername}/${coursename}/${id}`,
             contentType: 'json/application'
         };
 

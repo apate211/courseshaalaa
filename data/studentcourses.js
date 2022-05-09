@@ -98,44 +98,50 @@ async function getdetailsforsubmission(id){
     return new_obj;
 }
 
-async function adduploadedassignment(obj){
-    let coursescollection = await studentcourses();
-    let findone = await coursescollection.findOneAndUpdate({$and: [{ "coursename": obj.coursename},{"studentusername" : obj.studentusername},{"teacherusername" : obj.teacherusername},{"assignment.$.assignment_id": obj.assignment_id}]})
+// async function adduploadedassignment(obj){
+//     let coursescollection = await studentcourses();
+//     let findone = await coursescollection.findOneAndUpdate({$and: [{ "coursename": obj.coursename},{"studentusername" : obj.studentusername},{"teacherusername" : obj.teacherusername},{"assignment.$.assignment_id": obj.assignment_id}]})
     
-    if (findone){
-        // let finddoc = coursescollection.findOne({"_id": findone._id})
-        let insert_info = coursescollection.findOneAndUpdate({query:{"_id": findone._id}},{update: {"assignment.$.path": obj.path}});
-        resobj = {
-            inserted: 1,
-            deletefile: 1,
-            path: insert_info.path
-        }
-        return resobj
-    }else
-    {
-        let insert_obj = {
-            coursename: obj.coursename,
-            studentusername : obj.studentusername, 
-            teacherusername : obj.teacherusername,
-            type: "enrolled",
-            assignments: []
-        }
-        let assignmentobject = {
-            "path": obj.path,
-            "duedate": "",
-            "grade":0,
-            "gradeposted":0,
-            "assignmenttitle": obj.assignmenttitle,
-            "assignment_id": obj.id
-        }
+//     if (findone){
+//         // let finddoc = coursescollection.findOne({"_id": findone._id})
+//         let insert_info = coursescollection.findOneAndUpdate({query:{"_id": findone._id}},{update: {"assignment.$.path": obj.path}});
+//         resobj = {
+//             inserted: 1,
+//             deletefile: 1,
+//             path: insert_info.path
+//         }
+//         return resobj
+//     }else
+//     {
+//         let insert_obj = {
+//             coursename: obj.coursename,
+//             studentusername : obj.studentusername, 
+//             teacherusername : obj.teacherusername,
+//             type: "enrolled",
+//             assignments: []
+//         }
+//         let assignmentobject = {
+//             "path": obj.path,
+//             "duedate": "",
+//             "grade":0,
+//             "gradeposted":0,
+//             "assignmenttitle": obj.assignmenttitle,
+//             "assignment_id": obj.id
+//         }
 
-        insert_obj.assignments.push(assignmentobject);
+//         insert_obj.assignments.push(assignmentobject);
 
-        let new_obj = await coursescollection.insertOne(insert_obj);
+//         let new_obj = await coursescollection.insertOne(insert_obj);
 
-    }
+//     }
 
-    return obj;
+//     return obj;
+// }
+
+async function finduploadedassignment(teacherusername,coursename,id){
+    let coursescollection = await studentcourses();
+    let find_info = coursescollection.findOne({$and:[{"assignmets.assignmet_id": id},{"teacherusername":teacherusername},{"coursename":coursename}]});
+    console.log(find_info);
 }
 
 async function main(){
@@ -150,5 +156,7 @@ module.exports={
     enrolledcourses,
     recommend,
     getdetailsforsubmission,
-    adduploadedassignment
+    // adduploadedassignment,
+    finduploadedassignment
+    // finduploadedassignment
 }
