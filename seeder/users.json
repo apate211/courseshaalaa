@@ -1,0 +1,56 @@
+[
+  {
+  "_id": "627712bc6bbb7b34f816b775",
+  "username": "aniket2499",
+  "email": "ap@gmail.com",
+  "firstname": "Aniket",
+  "lastname": "Patel",
+  "password": "$2b$16$2TxZaBlgi8v0qFpft//R0.LtscNm2zphjyHlK.UeD8aMxkkbBaoIe",
+  "usertype": "teacher"
+  },
+  {
+    "_id": "627719866bbb7b34f816c184",
+    "username": "sahil",
+    "email": "s@gmial.com",
+    "firstname": "sahil",
+    "lastname": "sahil",
+    "password": "$2b$16$IOhFhzRVUWlWRfFZdoGRpeBnTbZsxIOeQwfPCvezfEmFZBgT3R3Hq",
+    "usertype": "student"
+  },
+  {
+    "_id":"6277998c6bbb7b34f816ee28",
+    "username": "tes3",
+    "email": "s",
+    "firstname": "s",
+    "lastname": "ss",
+    "password": "$2b$16$uWfdnidUI9aiyypqe1tnd.8JnEmLyF95ty5rY0wcFQwVvW9TNZnmK",
+    "usertype": "teacher"
+  },
+  {
+    "_id": "627799e46bbb7b34f816eea1",
+    "username": "test3",
+    "email": "ts",
+    "firstname": "ts",
+    "lastname": "ts",
+    "password": "$2b$16$2PCcx8K/i4BXeMTEb5ZiK.QgyG71qCtySZaOzW8EeHrpwMXuynzmy",
+    "usertype": "student"
+  },
+  {
+    "_id":"6277c7b46bbb7b34f8170916",
+    "username": "test4",
+    "email": "test4@gmail.com",
+    "firstname": "test4",
+    "lastname": "test4",
+    "password": "$2b$05$dCEvEFgbHQ04ff7pbvZcteyRO5JNSi1LmwZRUlMAlDcihBV6dPlve",
+    "usertype": "teacher"
+  },
+  {
+    "_id": "6277e7d36bbb7b34f8171a05",
+    "username": "test5",
+    "email": "test5@gmail.com",
+    "firstname": "test5",
+    "lastname": "test5",
+    "password": "$2b$05$I3vVtMbVDEGt3WGgYleQzOAnaLiWzTehlDD/G8HIUOee25Ch87t6e",
+    "usertype": "student"
+  }
+]

@@ -1,0 +1,148 @@
+[
+  {
+  "_id": "627719246bbb7b34f816c13a",
+  "coursename": "Web Technologies",
+  "username": "aniket2499",
+  "assignments": [
+    {
+      "assignment_name": "Assignment 1",
+      "assignmentdescription": "introduction",
+      "startdate": "2022-05-23",
+      "enddate": "2022-05-20",
+      "coursename": "Web Technologies",
+      "_id": "62779bb78cc3de9021df0071",
+      "sequencenumber": 1
+    },
+    {
+      "assignment_name": "Assignment 2",
+      "assignmentdescription": "introduction part2",
+      "startdate": "2022-05-23",
+      "enddate": "2022-05-20",
+      "coursename": "Web Technologies",
+      "_id":"62779c028cc3de9021df0072",
+      "sequencenumber": 2
+    }
+  ],
+  "coursetag": "Web Development",
+  "deployed": 1,
+  "description": "Web Technology refers to the various tools and techniques that are utilized in the process of communication between different types of devices over the internet. A web browser is used to access web pages. Web browsers can be defined as programs that display text, data, pictures, animation, and video on the Internet. Hyperlinked resources on the World Wide Web can be accessed using software interfaces provided by Web browsers.\r\n\r\nWeb Technology can be classified into the following sections:\r\nWorld Wide Web (WWW): The World Wide Web is based on several different technologies : Web browsers, Hypertext Markup Language (HTML) and Hypertext Transfer Protocol (HTTP).\r\n\r\nWeb Browser: The web browser is an application software to explore www (World Wide Web). It provides an interface between the server and the client and requests to the server for web documents and services.\r\n\r\nWeb Server: Web server is a program which processes the network requests of the users and serves them with files that create web pages. This exchange takes place using Hypertext Transfer Protocol (HTTP).",
+  "enddate": "2022-05-28",
+  "startdate": "2022-05-09",
+  "videos": [
+    {
+      "username": "aniket2499",
+      "coursename": "Web Technologies",
+      "videotitle": "ajax 2 ",
+      "sequencenumber": 1,
+      "videodescription": "asdfasdf",
+      "path": "/public/uploads/aniket2499/Web Technologies/videos/WhatsApp Video 2022-04-27 at 3.28.12 AM.mp4",
+      "_id":"6277a98695c6e11a7a7c9de4"
+    },
+    {
+      "username": "aniket2499",
+      "coursename": "Web Technologies",
+      "videotitle": "ajax ",
+      "sequencenumber": 2,
+      "videodescription": "asdfasdf",
+      "path": "/public/uploads/aniket2499/Web Technologies/videos/WhatsApp Video 2022-04-26 at 2.25.34 AM.mp4",
+      "_id": "6277aa9195c6e11a7a7c9de5"
+    }
+  ]
+  },
+  {
+    "_id": "627794e56bbb7b34f816ea7a",
+    "coursename": "Web 2",
+    "username": "aniket2499",
+    "assignments": [
+      {
+        "assignment_name": "as 1",
+        "assignmentdescription": "asdfasdfadsf",
+        "startdate": "2022-05-10",
+        "enddate": "2022-05-07",
+        "coursename": "Web 2",
+        "_id": "6277ec9f0f1badcd21e400db",
+        "sequencenumber": 1
+      },
+      {
+        "assignment_name": "as 2",
+        "assignmentdescription": "asdfasdfadsf",
+        "startdate": "2022-05-10",
+        "enddate": "2022-05-07",
+        "coursename": "Web 2",
+        "_id":"6277ecb20f1badcd21e400dc",
+        "sequencenumber": 2
+      },
+      {
+        "assignment_name": "as 3",
+        "assignmentdescription": "asdfasdfadsf",
+        "startdate": "2022-05-10",
+        "enddate": "2022-05-07",
+        "coursename": "Web 2",
+        "_id":"6277ecb90f1badcd21e400dd",
+        "sequencenumber": 3
+      }
+    ],
+    "coursetag": "Web Development",
+    "deployed": 1,
+    "description": "this is web 2",
+    "enddate": "2022-05-28",
+    "startdate": "2022-05-15",
+    "videos": []
+  },
+  {
+    "_id":"627796346bbb7b34f816ebae",
+    "coursename": "course1",
+    "username": "user3",
+    "assignments": [],
+    "coursetag": "Web Development",
+    "deployed": 0,
+    "description": "asdfasdfasd",
+    "enddate": "2022-05-28",
+    "startdate": "2022-05-18",
+    "videos": []
+  },
+  {
+    "_id": "6277c7ff6bbb7b34f8170948",
+    "coursename": "Algorithms",
+    "username": "test4",
+    "assignments": [
+      {
+        "assignment_name": "ajax",
+        "assignmentdescription": "introduction of the chapter",
+        "startdate": "2022-05-11",
+        "enddate": "2022-05-27",
+        "coursename": "Algorithms",
+        "_id":"6277cbaed04e823d87fe55c8",
+        "sequencenumber": 1
+      }
+    ],
+    "coursetag": "Algorithms",
+    "deployed": 1,
+    "description": "In mathematics and computer science, an algorithm (/ˈælɡərɪðəm/ (listen)) is a finite sequence of well-defined instructions, typically used to solve a class of specific problems or to perform a computation.[1] Algorithms are used as specifications for performing calculations and data processing. By making use of artificial intelligence, algorithms can perform automated deductions (referred to as automated reasoning) and use mathematical and logical tests to divert the code through various routes (referred to as automated decision-making). Using human characteristics as descriptors of machines in metaphorical ways was already practiced by Alan Turing with terms such as \"memory\", \"search\" and \"stimulus\".[2]\r\n\r\nIn contrast, a heuristic is an approach to problem solving that may not be fully specified or may not guarantee correct or optimal results, especially in problem domains where there is no well-defined correct or optimal result.[3]",
+    "enddate": "2022-05-20",
+    "startdate": "2022-05-11",
+    "videos": []
+  },
+  {
+    "_id": "6277cd746bbb7b34f8170c87",
+    "coursename": "web programming",
+    "username": "test4",
+    "assignments": [],
+    "coursetag": "Web Development",
+    "deployed": 0,
+    "description": "While web development typically refers to web markup and coding, website development includes all related development tasks, such as client-side scripting, server-side scripting, server and network security configuration, eCommerce development, and content management system (CMS) development.",
+    "enddate": "2022-05-29",
+    "startdate": "2022-05-03",
+    "videos": [
+      {
+        "username": "test4",
+        "coursename": "web programming",
+        "videotitle": "asdfasd",
+        "sequencenumber": 1,
+        "videodescription": "fsdfsdf",
+        "path": "/public/uploads/test4/web programming/videos/tcpipprojimg.png",
+        "_id": "6277db641e6fd945420b98c6"
+      }
+    ]
+  }
+]

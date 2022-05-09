@@ -1,0 +1,43 @@
+[
+  {
+  "_id":"62720c198cc7029ebffb6294",
+  "coursename": "Web Technologies",
+  "studentusername": "user4",
+  "teacherusername": "user3",
+  "type": "enrolled",
+  "assignments": [
+    {
+      "path": "/public/uploads/user3/Web Technologies/assignments/TCP_IP_Assignment_11.pdf",
+      "duedate": "",
+      "grade": 20,
+      "gradesposted": 0,
+      "assignmenttitle": "ajax assignment",
+      "_id": "62723108f7dadbb5b6d1cd8b",
+      "assignment_id": "62723161f7dadbb5b6d1cd8c"
+    }
+  ],
+  "videos": 2
+  },
+  {
+    "_id": "6277ae146bbb7b34f816fbe5",
+    "coursename": "Web 2 ",
+    "studentusername": "sahil",
+    "teacherusername": "aniket2499",
+    "assignments": [],
+    "course_id":"627794e56bbb7b34f816ea7a",
+    "teachersusername": "aniket2499",
+    "type": "enrolled",
+    "videos": 1
+  },
+  {
+    "_id": "6277e7ea6bbb7b34f8171a1b",
+    "coursename": "Web 2 ",
+    "studentusername": "test5",
+    "teacherusername": "aniket2499",
+    "assignments": [],
+    "course_id": "627794e56bbb7b34f816ea7a",
+    "teachersusername": "aniket2499",
+    "type": "enrolled",
+    "videos": 1
+  }
+]

@@ -31,6 +31,9 @@ module.exports = {
   },
 
   findUser: async (user) => {
+    if (!user) {
+      throw new AppError("Please send username", ErrorType.validation_error);
+    }
     const userscollection = await users();
     const searchedUser = await userscollection.findOne({
       username: user.username,

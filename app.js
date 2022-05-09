@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
+const fs = require("fs");
 const errorMiddleware = require("./middleware/errorHandler");
+
+// const { execSync } = require("child_process");
+// const DB_Name = "courshaalaa";
 app.use(express.json());
 
 // Public directory(View)
@@ -21,6 +25,7 @@ const { ConnectionCheckedInEvent } = require("mongodb");
 
 // For session and middleware functions
 const session = require("express-session");
+const path = require("path");
 app.use(
   session({
     name: "maintainUserInfo",
@@ -29,6 +34,24 @@ app.use(
     resave: false,
   })
 );
+// app.use("/", async function (req, res, next) {
+//   try {
+//     execSync(
+//       `mongoimport --db ${DB_Name} --collection courses --drop --file "${process.cwd()}/seeder/courses.json" -jsonArray`
+//     );
+//     execSync(
+//       `mongoimport --db ${DB_Name} --collection studentcourses --drop --file "${process.cwd()}/seeder/studentcourses.json" -jsonArray`
+//     );
+//     execSync(
+//       `mongoimport --db ${DB_Name} --collection dropdowndata --drop --file "${process.cwd()}/seeder/dropdowndata.json" -jsonArray`
+//     );
+//     execSync(
+//       `mongoimport --db ${DB_Name} --collection users --drop --file "${process.cwd()}/seeder/users.json" -jsonArray`
+//     );
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 configRoutes(app);
 app.use(errorMiddleware);

@@ -8,28 +8,26 @@ const data = require("../data");
 const AppError = require("../middleware/appError");
 const { ErrorType } = require("../middleware/enum");
 
-
 router.get("/", async function (req, res, next) {
-    try {
-      // let username = req.session.user.username;
-      let username = "user1";
-      let coursesData = data.studentcourses;
-      let courses = await coursesData.recommendedcourses();
-      let enroll=await coursesData.enrolledcourses(username)
-      let recommenda=await coursesData.recommend(username)
-  
-      res.render("./mainpage/students", { navbar: true, courses: courses,enrolled:enroll,recom:recommenda});
-    } catch (error) {
-      next(error);
-    }
-  });
+  try {
+    // let username = req.session.user.username;
+    let username = "user1";
+    let coursesData = data.studentcourses;
+    let courses = await coursesData.recommendedcourses();
+    let enroll = await coursesData.enrolledcourses(username);
+    let recommenda = await coursesData.recommend(username);
 
-  router.post("/")
+    res.render("./mainpage/students", {
+      navbar: true,
+      courses: courses,
+      enrolled: enroll,
+      recom: recommenda,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
+router.post("/");
 
-
-
-
-
-
-module.exports=router;
+module.exports = router;
