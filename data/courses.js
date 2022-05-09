@@ -318,5 +318,33 @@ module.exports = {
             console.log(info);
         }
         return true;
-    }
+    },
+
+    addCourseForSeed: async (coursename,coursetag,description,startdate,enddate,username,videos,assignments,deployed)=>{
+        
+        try{
+            const coursescollection = await courses()
+            console.log("basd")
+            const insertInfo = await coursescollection.insertOne(
+                    { 
+                        "coursename": coursename,
+                        "coursetag": coursetag,
+                        "description": description,
+                        "startdate": startdate,
+                        "enddate": enddate,
+                        "username": username,
+                        "videos": videos,
+                        "assignments": assignments,
+                        "deployed": deployed
+                    } 
+                );
+            if (!insertInfo.acknowledged || !insertInfo.insertedId)
+                throw 'Could not add';
+            
+            return "true";
+        }catch(e){
+            throw "error in adding the course";
+        }
+        
+    },
 }

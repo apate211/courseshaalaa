@@ -25,7 +25,8 @@ async function addcourse(coursename,studentusername,teacherusername,type){
         studentusername: studentusername,
         teacherusername: teacherusername,
         type: type,
-        assignments: []
+        assignments: [],
+        videos:[]
         
     }
     const insertInfo = await scoursescollection.insertOne(stud);
