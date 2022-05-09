@@ -1,6 +1,38 @@
 (function($){
+    
+    let teacherusername = document.getElementById("teacherusername").value;
+    let coursename = document.getElementById("coursename").value;
+    let id = document.getElementById("id").vlaue;
 
     jQuery(document).ready(function() {
+        var requestConfig = {
+            method: 'Get',
+            url: '/student/ass_sub_bystudents/teacherusername/coursename/id',
+            contentType: 'json/application'
+        };
+
+        jQuery.ajax(requestConfig).then(function(responseMessage){
+            responseMessage = responseMessage.assignment;
+            // console.log(responseMessage)
+            let name = responseMessage.path.split('/');
+            let length = name.length
+            debugger;
+            jQuery("#asslist").append(
+                `<span>
+                <li>
+                    <a href="${responseMessage.path}">
+                    ${name[length - 1]};
+                    </a>
+                </li> 
+                <button class ="btn btn-danger" id=""></button>
+                </span>
+                `
+            )
+                
+        })
+
+        jQuery.ajax(requestConfig).then()
+        
 
         jQuery('#button').on('click',function(event){
             debugger;
@@ -9,6 +41,7 @@
             let files = document.getElementById('textfile').files[0];
             let teacherusername = document.getElementById("teacherusername").value;
             let coursename = document.getElementById("coursename").value;
+            let id = document.getElementById("id").vlaue;
             formData = new FormData();
 
             // files = document.getElementById('id').value;
@@ -30,11 +63,15 @@
             jQuery.ajax(requestConfig).then(function(responseMessage){
                 responseMessage = responseMessage.assignment;
                 // console.log(responseMessage)
+                let name = responseMessage.path.split('/');
+                let length = name.length
                 debugger;
                 jQuery("#asslist").append(
                     `<span>
                     <li>
-                        ${responseMessage.path};
+                        <a href="${responseMessage.path}">
+                        ${name[length - 1]};
+                        </a>
                     </li> 
                     <button class ="btn btn-danger" id=""></button>
                     </span>

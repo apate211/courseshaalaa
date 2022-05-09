@@ -7,6 +7,7 @@ const { dropdowndata } = require("../config/mongoCollections");
 const AppError = require("../middleware/appError");
 const { ErrorType } = require("../middleware/enum");
 const { response } = require("express");
+const { query } = require("express");
 
 
 async function gettagsdropdown(type){
@@ -99,10 +100,11 @@ async function getdetailsforsubmission(id){
 
 async function adduploadedassignment(obj){
     let coursescollection = await studentcourses();
-    let findone = await coursescollection.findOne({$and: [{ "coursename": obj.coursename},{"studentusername" : obj.studentusername},{"teacherusername" : obj.teacherusername},{"assignment.$.assignment_id": obj.assignment_id}]})
+    let findone = await coursescollection.findOneAndUpdate({$and: [{ "coursename": obj.coursename},{"studentusername" : obj.studentusername},{"teacherusername" : obj.teacherusername},{"assignment.$.assignment_id": obj.assignment_id}]})
     
     if (findone){
-        let insert_info = coursescollection.findAndModify({query:{"_id": findone._id}},{update: {"assignment.$.path": obj.path}});
+        // let finddoc = coursescollection.findOne({"_id": findone._id})
+        let insert_info = coursescollection.findOneAndUpdate({query:{"_id": findone._id}},{update: {"assignment.$.path": obj.path}});
         resobj = {
             inserted: 1,
             deletefile: 1,
