@@ -12,12 +12,14 @@
     <div class="mt-3">
         <button type="submit" class="btn btn-dark"> Log In </button> 
     </div>
+    {{#if hasErrors}}
+    <div class="Error" style="color:red">{{error}}</div>
+    {{/if}}
+
     <div class="mt-3">
         Did you registered? <a href="/login/signup">Signup</a>
     </div>
-    <div class="error" style="color:red">
-
-    </div>
+    
 
 </form>
 {{!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>

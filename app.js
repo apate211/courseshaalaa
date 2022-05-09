@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const errorMiddleware = require("./middleware/errorHandler");
 app.use(express.json());
+
 // Public directory(View)
 const exphbs = require("express-handlebars");
 const static = express.static(__dirname + "/public");
