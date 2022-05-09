@@ -103,7 +103,6 @@ const getCourseByNameAndCourse = async(courseName, username) => {
     return course;
 }
 
-<<<<<<< HEAD
 const getVideoSequenceByUserAndCourse = async(courseName, username) => {
     // const enrolledCourseCollection = await enrolledcourses();
     let studentcourescollection = await studentcourses()
@@ -117,13 +116,6 @@ const updateVideoSequenceByUserAndCourse = async(coursename, username, seq) => {
         if(res.upsertedCount == 0){
             throw "Couldn't update video sequence"
         } 
-=======
-async function getdetailsforsubmission(id){
-    let coursescollection = await courses();
-    let new_obj = await coursescollection.findOne({"assignments._id": ObjectId(id)}, {projection: {"username": 1, "coursename": 1, "serialnumber": 1}})
-    console.log(new_obj);
-    return new_obj;
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1
 }
 
 async function adduploadedassignment(obj){
@@ -176,13 +168,8 @@ module.exports={
     allCourses,
     enrolledcourses,
     recommend,
-<<<<<<< HEAD
     getStudentcourseById,
     getVideoSequenceByUserAndCourse,
     updateVideoSequenceByUserAndCourse,
     getCourseByNameAndCourse
-=======
-    getdetailsforsubmission,
-    adduploadedassignment
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1
 }

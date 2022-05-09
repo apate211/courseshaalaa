@@ -13,15 +13,8 @@
   "dependencies": {
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "express": "^4.18.1",
-=======
     "bcryptjs": "^2.4.3",
-=======
->>>>>>> e4117e8505f7875493dfb281e22301888f250b34
     "express": "^4.17.3",
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1
     "express-fileupload": "^1.3.1",
     "express-handlebars": "^6.0.5",
     "express-session": "^1.17.2",

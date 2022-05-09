@@ -14,11 +14,7 @@ const constructorMethod = (app) => {
 
     app.use('/student',student);
 
-<<<<<<< HEAD
    // app.use('/enrolled_courses',enrolledRoutes)
-=======
-    // app.use('/enrolled_courses',enrolledRoutes)
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1
 
     app.use('*', (req, res) => {
         res.sendStatus(404);

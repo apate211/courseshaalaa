@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { ErrorType } = require("./enum");
 const AppError = require("./appError");
 
@@ -31,9 +30,8 @@ function generateAndSendAppErrorResponce(err, res) {
 module.exports = function (err, req, res, next) {
   return generateAndSendAppErrorResponce(err, res);
 };
-=======
-const { ErrorType } = require("./enum");
-const AppError = require("./appError");
+//const { ErrorType } = require("./enum");
+//const AppError = require("./appError");
 
 function generateErrorResponse(err, status, res) {
   let errObj = { status: status, message: err.message };
@@ -64,4 +62,3 @@ function generateAndSendAppErrorResponce(err, res) {
 module.exports = function (err, req, res, next) {
   return generateAndSendAppErrorResponce(err, res);
 };
->>>>>>> 441c236960c15741317322a14ac26e2087180329

@@ -1,58 +1,3 @@
-<<<<<<< HEAD
-const mongoCollections = require("../config/mongoCollections");
-const users = mongoCollections.users;
-const { ObjectId } = require("mongodb");
-const bcrypt = require("bcrypt");
-const AppError = require("../middleware/appError");
-const { ErrorType } = require("../middleware/enum");
-const saltRounds = 5;
-
-module.exports = {
-  addUser: async (user) => {
-    const userscollection = await users();
-    let password = await bcrypt.hash(user.password, saltRounds);
-
-    const insertInfo = await userscollection.updateOne(
-      { username: user.username },
-      {
-        $setOnInsert: {
-          password: password,
-          email: user.email,
-          firstname: user.firstname,
-          lastname: user.lastname,
-          usertype: user.usertype,
-        },
-      },
-      { upsert: true }
-    );
-    if (insertInfo.upsertedCount == 0) {
-      throw new AppError("username already exists", ErrorType.invalid_request);
-    }
-    return true;
-  },
-
-  findUser: async (user) => {
-    const userscollection = await users();
-    const searchedUser = await userscollection.findOne({
-      username: user.username,
-    });
-    if (searchedUser) {
-      if (await bcrypt.compare(user.password, searchedUser.password)) {
-        return searchedUser;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  },
-  findUserByUsername: async (username) => {
-    const usercollection = await users();
-    const searchedUser = usercollection.findOne({username: username});
-    return searchedUser;
-  }
-};
-=======
 const {object}=require('mongodb')
 const bcrypt=require('bcryptjs')
 const saltRounds=5
@@ -179,4 +124,3 @@ module.exports={
     addUser,
     checkUser
 }
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1

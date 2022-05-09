@@ -7,11 +7,8 @@
     </div>
     </div>
       <div class="row bg-light pt-3" id="description">
-<<<<<<< HEAD
-=======
         <input type="hidden" value="{{course.coursename}}" id="coursename">
         <input type="hidden" value="{{course.username}}" id="teacherusername">
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1
         <h1> {{course.coursename}} </h1>
         <div class="pt-3">
           <div class="row p-3">
@@ -55,24 +52,16 @@
                 <tr>
                     <input type="hidden" value="{{assignment_id}}" id="ass_{{this.studentusername}}">
                     {{!-- <td> <input type="hidden" value="{{this.studentusername}}" id="{{this.studentusername}}"></td> --}}
-<<<<<<< HEAD
-                    <td> Assignment {{this.assignment_number}}</td>
-
-                    <td>  {{this.assignmenttitle}} </td>
-                    <td> <a href="/enrolled_courses/assignments/{{_id}}" class="btn btn-primary buttonclick"> Submit Assignment </td>
-=======
                     <td> Assignment {{this.sequencenumber}}</td>
 
                     <td>  {{this.assignment_name}} </td>
                     <td> <a href="/student/assignmentssubmission/{{this._id}}" class="btn btn-primary buttonclick" id="{{_id}}"> Submit Assignment </td>
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1
                 </tr>
             {{/each}}
         </tbody>
     
     </table>
         </div>
-<<<<<<< HEAD
         <div class="row bg-light " id="videos">
             <h3> Video Lectures </h3>
             <table id="example-video" class="table table-dark table-striped" style="width:100%">
@@ -104,10 +93,3 @@
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="/public/js/assignmentuploadteacher.js"></script>
-=======
-</div>
-
-
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="/public/js/enrolledstudentsassignment.js"></script>
->>>>>>> 81c17f14a75a2aeabc6c51f3bbec1eb1e2ceded1

@@ -7,7 +7,7 @@ const router = express.Router();
 const data = require("../data");
 const AppError = require("../middleware/appError");
 
-router.use(upload())
+router.use(upload()) 
 
 router.get("/", async function (req, res, next) {
     try {
@@ -30,44 +30,13 @@ router.get("/", async function (req, res, next) {
         courses[x].description = string;
         courses[x]._id = courses[x]._id.toString();
       }
-
-      // for(x in enroll){
-      //   let string = ""
-      //   for(let y of enroll[x].description){
-      //       string = string + y;
-      //       if(y === '.'){
-      //           string = string + y;
-      //           break;
-      //       }
-      //   }
-      //   enroll[x].description = string;
-      //   enroll[x]._id = enroll[x]._id;
-      // }
-
-      // for(x in recommenda){
-      //   let string = ""
-      //   for(let y of recommenda[x].description){
-      //       string = string + y;
-      //       if(y === '.'){
-      //           string = string + y;
-      //           break;
-      //       }
-      //   }
-      //   recommenda[x].description = string;
-      //   recommenda[x]._id = string;
-      // }
       if(enroll){
         for(let x = 0 ; x < enroll.length ; x++){
           enroll[x].course_id.toString()
-          enroll[x].course_id
+          enroll[x].course_id   
         }
       }
-      // if(recommenda){
-      //   for(let x = 0 ; x < enroll.length ; x++){
-      //     recommenda[x]._id.toString()
-      //   }
-      // }
-      // console.log(enroll[0]._id.toString());
+     
       res.render("./mainpage/students", { navbar: true, courses: courses,enrolled:enroll,recom:recommenda});
     } catch (error) {
         throw error;
@@ -140,7 +109,6 @@ router.get('/enrolled/:id', async (req, res) => {
 });
 
 router.get('/videos/:id/:index', async(req, res) => {
- // console.log('hhhhhhhh')
   const stud = req.session.user.username;
   const id = req.params.id;
   const index = req.params.index;
@@ -186,18 +154,18 @@ router.post('/videoCompleted', async function(req,res){
  res.redirect('/student/enrolled/'+enrolledCourseId)
 })
 
-    //const id = req.params.id;    Aniket chan
-    //let courses = data.enrolled_courses
-    //const enrolledCourse = await courses.getEnrolledCourseById(id);
-    // const teacher = enrolledCourse.teacher;
-    // const courseName = enrolledCourse.course_name;
-    // const course = await enrolledData.getCourseByNameAndCourse(courseName, teacher);
-    // course.assignments = enrolledCourse.assignments;
-    // course.enrolledCourseId = id;
-    //console.log('Router Course: ',course)
-   // enrolledCourse._id = enrolledCourse._id.toString();
-    //res.render('mainpage/enrollecourse', {course: enrolledCourse});
-//});
+//     const id = req.params.id;   
+//     let courses = data.enrolled_courses
+//     const enrolledCourse = await courses.getEnrolledCourseById(id);
+//     const teacher = enrolledCourse.teacher;
+//     const courseName = enrolledCourse.course_name;
+//     const course = await enrolledData.getCourseByNameAndCourse(courseName, teacher);
+//     course.assignments = enrolledCourse.assignments;
+//     course.enrolledCourseId = id;
+//     console.log('Router Course: ',course)
+//    enrolledCourse._id = enrolledCourse._id.toString();
+//     res.render('mainpage/enrollecourse', {course: enrolledCourse});
+// });
 
 
 router.get('/not_enrolled/:id', async (req, res) => {
@@ -205,58 +173,44 @@ router.get('/not_enrolled/:id', async (req, res) => {
   let courses = data.enrolled_courses
   const enrolledCourse = await courses.getEnrolledCourseById(id);
   enrolledCourse._id = enrolledCourse._id.toString();
-  // const teacher = enrolledCourse.teacher;
-  // const courseName = enrolledCourse.course_name;
-  // const course = await enrolledData.getCourseByNameAndCourse(courseName, teacher);
-  // course.assignments = enrolledCourse.assignments;
-  // course.enrolledCourseId = id;
-  //console.log('Router Course: ',course)
   res.render('mainpage/notenrolledcourse', {course: enrolledCourse});
 });
 
-router.get('/videos/:id/:index', async(req, res) => {
-  const id = req.params.id;
-  const index = req.params.index;
-  const enrolledCourse = await enrolledData.getEnrolledCourseById(id);
-  const curSeq = enrolledCourse.videos;
-  const showButton = index-1 == curSeq;
-  const coursename = enrolledCourse.course_name;
-  const teacher = enrolledCourse.teacher;
-  const course = await enrolledData.getCourseByNameAndCourse(coursename, teacher);
-  const curVideo = course.videos[index-1];
-  const len = course.videos.length;
-  res.render('course/video', {enrolledCourseId: id, seq: curSeq, showButton: showButton, 
-    curVideo: curVideo, index: index, coursename: coursename, len: len})
-});
+// router.get('/videos/:id/:index', async(req, res) => {
+//   const id = req.params.id;
+//   const index = req.params.index;
+//   const enrolledCourse = await enrolledData.getEnrolledCourseById(id);
+//   const curSeq = enrolledCourse.videos;
+//   const showButton = index-1 == curSeq;
+//   const coursename = enrolledCourse.course_name;
+//   const teacher = enrolledCourse.teacher;
+//   const course = await enrolledData.getCourseByNameAndCourse(coursename, teacher);
+//   const curVideo = course.videos[index-1];
+//   const len = course.videos.length;
+//   res.render('course/video', {enrolledCourseId: id, seq: curSeq, showButton: showButton, 
+//     curVideo: curVideo, index: index, coursename: coursename, len: len})
+// });
 
-router.post('/videoCompleted', async function(req,res){
-  console.log('button clicked')
-  let dt = req.body.btnn;
-  let vals = dt.split('#')
-  let enrolledCourseId = vals[0]
-  let curSeq = +vals[1]
-  let len = +vals[2]
-  curSeq = curSeq + 1
-  console.log('Reached here')
-  try {
-    if(curSeq <= len) {
-      await enrolledData.updateVideoSequenceByUserAndCourse(enrolledCourseId, curSeq);
-    }   
-  }
-  catch(e) {
-    console.log('Unable to update')
-  }
- res.redirect('/student/enrolled/'+enrolledCourseId)
-});
+// router.post('/videoCompleted', async function(req,res){
+//   console.log('button clicked')
+//   let dt = req.body.btnn;
+//   let vals = dt.split('#')
+//   let enrolledCourseId = vals[0]
+//   let curSeq = +vals[1]
+//   let len = +vals[2]
+//   curSeq = curSeq + 1
+//   console.log('Reached here')
+//   try {
+//     if(curSeq <= len) {
+//       await enrolledData.updateVideoSequenceByUserAndCourse(enrolledCourseId, curSeq);
+//     }   
+//   }
+//   catch(e) {
+//     console.log('Unable to update')
+//   }
+//  res.redirect('/student/enrolled/'+enrolledCourseId)
+// });
 
-
-router.get('/enrollthestudent/:id', async(req,res)=>{
-  const id  = req.params.id;
-  const username = req.session.user.username;
-  let courses = data.enrolled_courses;
-  const enrolledCourse = await courses.onEnrollment(id,username);
-  res.redirect('/student');
-});
 
 router.get('/enrollthestudent/:id', async(req,res)=>{
   const id  = req.params.id;
@@ -266,6 +220,13 @@ router.get('/enrollthestudent/:id', async(req,res)=>{
   res.redirect('/student');
 });
 
+// router.get('/enrollthestudent/:id', async(req,res)=>{
+//   const id  = req.params.id;
+//   const username = req.session.user.username;
+//   let courses = data.enrolled_courses;
+//   const enrolledCourse = await courses.onEnrollment(id,username);
+//   res.redirect('/student');
+// });
 
 router.post('/uploadassignment',async(req,res)=>{           // when the teacher press upload video button this post method is called.
   let filedata = req.files.textfile;
