@@ -1,0 +1,55 @@
+
+<div class="container-fluid p-5">
+    <div class="row border-bottom border-secondary border-1">
+      <h3> Courses under development </h3>
+    </div>
+    <div class="row">
+      {{#each courses.not_deployed_courses}}
+      <div class="card m-3" style="width: 18rem;">
+        <img class="card-img-top" src="/public/images/projectimages.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{this.coursename}}</h5>
+          <p class="card-text">{{this.description}}</p>
+          <div class="row">
+            <div class="col-5">
+              <a href="/mainpage/details/{{this.coursename}}" class="btn btn-dark">Details</a>
+            </div>
+            <div class="col-6">
+              <a href="/mainpage/{{this.coursename}}" class="btn btn-dark"> Videos </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="row d-flex justify-content-center p-5">
+      <a href="/mainpage/createcourse" class="btn btn-dark w-25"> Create Course </a>
+    </div>
+    <div class="row border-bottom border-secondary border-1">
+      <h3> courses Deployed </h3>
+    </div>
+    <div class="row">
+      {{#each courses.deployed_courses}}
+        <div class="card m-3" style="width: 20rem;">
+          <img class="card-img-top" src="/public/images/projectimages.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{this.coursename}}</h5>
+            <p class="card-text">{{this.description}}</p>
+            <div class="row">
+              <div class="col-3">
+                <a href="/mainpage/details/{{this.coursename}}" class="btn btn-dark">Details</a>
+              </div>
+              <div class="col-3">
+                <a href="/mainpage/{{this.coursename}}" class="btn btn-dark"> Videos </a>
+              </div>
+              <div class="col-6">
+                <a href="/grades/{{this.coursename}}" class="btn btn-dark"> Submissions </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+

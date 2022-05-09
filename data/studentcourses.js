@@ -6,6 +6,7 @@ const upload = require("express-fileupload");
 const { dropdowndata } = require("../config/mongoCollections");
 const AppError = require("../middleware/appError");
 const { ErrorType } = require("../middleware/enum");
+const { response } = require("express");
 
 
 async function gettagsdropdown(type){
@@ -89,16 +90,63 @@ async function recommend(username){
     }
 }
 
+async function getdetailsforsubmission(id){
+    let coursescollection = await courses();
+    let new_obj = await coursescollection.findOne({"assignments._id": ObjectId(id)}, {projection: {"username": 1, "coursename": 1, "serialnumber": 1}})
+    console.log(new_obj);
+    return new_obj;
+}
 
+async function adduploadedassignment(obj){
+    let coursescollection = await studentcourses();
+    let findone = await coursescollection.findOne({$and: [{ "coursename": obj.coursename},{"studentusername" : obj.studentusername},{"teacherusername" : obj.teacherusername},{"assignment.$.assignment_id": obj.assignment_id}]})
+    
+    if (findone){
+        let insert_info = coursescollection.findAndModify({query:{"_id": findone._id}},{update: {"assignment.$.path": obj.path}});
+        resobj = {
+            inserted: 1,
+            deletefile: 1,
+            path: insert_info.path
+        }
+        return resobj
+    }else
+    {
+        let insert_obj = {
+            coursename: obj.coursename,
+            studentusername : obj.studentusername, 
+            teacherusername : obj.teacherusername,
+            type: "enrolled",
+            assignments: []
+        }
+        let assignmentobject = {
+            "path": obj.path,
+            "duedate": "",
+            "grade":0,
+            "gradeposted":0,
+            "assignmenttitle": obj.assignmenttitle,
+            "assignment_id": obj.id
+        }
+
+        insert_obj.assignments.push(assignmentobject);
+
+        let new_obj = await coursescollection.insertOne(insert_obj);
+
+    }
+
+    return obj;
+}
 
 async function main(){
     console.log(await recommend("Hariom"))
 //   console.log(await addcourse("aniket","user1","user3","enrolled"))
 }
+
 main()
 module.exports={
     addcourse,
     allCourses,
     enrolledcourses,
-    recommend
+    recommend,
+    getdetailsforsubmission,
+    adduploadedassignment
 }

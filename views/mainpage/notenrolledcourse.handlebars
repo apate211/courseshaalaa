@@ -1,0 +1,43 @@
+<div class="container p-5">
+  <div class="row bg-light">
+    <div class="btn-group pb-3 ps-0 pe-0">
+      <a href="#description" class="btn btn-primary active" aria-current="page">Course Info</a>
+      <a href="#assignments" class="btn btn-primary">Upload Assignments</a>
+      <a href="#studentssummary" class="btn btn-primary">Student Summary</a>
+    </div>
+    </div>
+      <div class="row bg-light pt-3" id="description">
+        <h1> {{course.coursename}} </h1>
+        <div class="pt-3">
+          <div class="row p-3">
+            <b>Description:</b>
+            {{course.description}}
+          </div>
+        </div>
+        <div class="pt-3">
+          <div class="row p-3">
+            <b>Teacher:</b>
+            {{course.username}}
+          </div>
+        </div>
+        <div class="pt-3">
+          <div class="row p-3">
+            <b>Start Date:</b>
+            {{course.startdate}}
+          </div>
+        </div>
+        <div class="pt-3">
+          <div class="row p-3">
+            <b>End Date: </b>
+            {{course.enddate}}
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <a class="btn btn-primary" href="/student/enrollthestudent/{{course._id}}" style="width: 75px;"> Enroll </a>
+        </div>
+      </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="/public/js/assignmentuploadteacher.js"></script>
