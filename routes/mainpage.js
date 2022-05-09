@@ -4,7 +4,8 @@ const upload = require('express-fileupload');
 const fs = require('fs');
 const res = require('express/lib/response');
 const router = express.Router();
-const data = require('../data')
+const data = require('../data');
+const xss = require('xss');
 
 router.use(upload())
 
@@ -56,6 +57,15 @@ router.get('/createcourse', async function(req,res){
 
 router.post('/addcourse',async function(req,res){
     let body = req.body;
+ 
+    xss(body.coursename);
+    xss(body.coursetag);
+    xss(body.description);
+    xss(body.startdate);
+    xss(body.enddate);
+    xss(req.session.user.username);
+
+
     let course = {
         coursename: body.coursename,
         coursetag: body.coursetag,
@@ -97,6 +107,9 @@ router.get('/gettagsfordropdown',async function(req,res){
 router.get('/uploadedassignments/:id', async function(req,res){
     let username = req.session.user.username;
     let coursename = req.params.id;
+
+    xss(req.session.user.username)
+    xss(req.params.id)
 
     // let username = 'user3';
     // let coursename = 'Web Technologies';

@@ -6,6 +6,7 @@ const upload = require("express-fileupload");
 const { dropdowndata } = require("../config/mongoCollections");
 const AppError = require("../middleware/appError");
 const { ErrorType } = require("../middleware/enum");
+const { default: xss } = require("xss");
 
 
 async function gettagsdropdown(type){

@@ -11,7 +11,7 @@ const { ErrorType } = require("../middleware/enum");
 
 router.get("/", async function (req, res, next) {
     try {
-      let username = req.session.user.username;
+      let username = xss(req.session.user.username);
       // let username = "user1";
       let coursesData = data.studentcourses;
       let courses = await coursesData.allCourses();

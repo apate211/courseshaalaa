@@ -10,6 +10,7 @@ const coursesCollection = mongoCollection.courses;
 const studentCoursersCollection = mongoCollection.studentcourses;
 const dropdownCollection = mongoCollection.dropdowndata;
 const userCollection = mongoCollection.users;
+const xss = require('xss');
 
 router.get("/", function (req, res) {
   res.render("./loginsignup/login", { title: "login", navbar: false });
@@ -37,6 +38,8 @@ router.post("/signup", async function (req, res, next) {
         ErrorType.validation_error
       );
     }
+
+
     body.username = await validation.checkString(body.username, "User-Name");
     body.password = await validation.checkString(body.password, "Password");
     body.email = await validation.checkString(body.email, "Email");
@@ -46,6 +49,13 @@ router.post("/signup", async function (req, res, next) {
   } catch (error) {
     return next(error);
   }
+
+  xss(body.username);
+  xss(body.password);
+  xss(body.email);
+  xss(body.firstname);
+  xss(body.lastname);
+  xss(body.usertype);
 
   let user = {
     username: body.username,
@@ -100,6 +110,10 @@ router.post("/", async function (req, res) {
         ErrorType.validation_error
       );
     }
+
+    xss(body.username);
+    xss(body.password);
+
     let user = {
       username: body.username,
       password: body.password,
