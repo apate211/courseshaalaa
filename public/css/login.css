@@ -8,16 +8,3 @@ form{
     padding-top: 250px;
     width: 20%;
 }
-
-.container2{
-    font-family: arial;
-    font-size: 15px;  
-    width: 350px;
-    height: 100px;
-  
-}
-
-.move-up {
-    top: -150px;
-    position: relative;
-}

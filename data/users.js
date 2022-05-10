@@ -117,10 +117,15 @@ async function checkUser(username, password){
 //     }
 // }
 // main()
-
+const findUserByUsername= async (username) => {
+    const usercoll = await usercollection();
+    const searchedUser = await usercoll.findOne({username: username});
+    return searchedUser;
+  }
 
 
 module.exports={
     addUser,
-    checkUser
+    checkUser,
+    findUserByUsername
 }

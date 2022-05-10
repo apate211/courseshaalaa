@@ -5,7 +5,6 @@ const fs = require('fs');
 const res = require('express/lib/response');
 const router = express.Router();
 const data = require('../data')
-var xss = require("xss");
 
 router.use(upload())
 
@@ -19,12 +18,12 @@ router.get('/getassignments',async function(req,res){
 })
 
 router.get('/assignmentdetails/:assignmentid/:coursename', async function(req,res){
-    let coursename = xss(req.params.coursename);
+    let coursename = req.params.coursename;
     //let username = req.session.user.username;
     // let teacherusername = 'user3'
-    let teacherusername = xss(req.session.username);
+    let teacherusername = req.session.username;
     // let assignment_id = "62723161f7dadbb5b6d1cd8c"
-    let assignment_id = xss(req.params.assignmentid);
+    let assignment_id = req.params.assignmentid;
     let initialpath = '/public/uploads/'
 
     // try {
@@ -54,9 +53,9 @@ router.get('/assignmentdetails/:assignmentid/:coursename', async function(req,re
 })
 
 router.get('/:id',async function(req,res){
-    let coursename = xss(req.params.id);
+    let coursename = req.params.id;
     // let username = 'user3';
-    let username = xss(req.session.user.username);
+    let username = req.session.user.username;
     // console.log(id + " " + username)
 
     let gettotalassignments = data.courses;
@@ -73,12 +72,12 @@ router.get('/:id',async function(req,res){
 })
 
 router.post('/updategrades',async function(req,res){
-    let teacherusername = xss(req.session.user.username); 
+    let teacherusername = req.session.user.username; 
     // let teacherusername = 'user3'
-    let studentusername = xss(req.body.studentusername);
-    let grade = xss(req.body.grade);
-    let assignment_id = xss(req.body.assignment_id);
-    let coursename = xss(req.body.coursename);
+    let studentusername = req.body.studentusername;
+    let grade = req.body.grade;
+    let assignment_id = req.body.assignment_id;
+    let coursename = req.body.coursename;
 
     let updategrades = data.courses;
     let result = await updategrades.updatestudentgrades(grade,assignment_id,studentusername,teacherusername,coursename);
@@ -86,9 +85,9 @@ router.post('/updategrades',async function(req,res){
 
 
 router.post('/postgrades',async function(req,res){
-    let teacherusername = xss(req.session.user.username);
+    let teacherusername = req.session.user.username;
     // let teacherusername = "user3";
-    let bodydata = xss(req.body);
+    let bodydata = req.body;
     bodydata.teacherusername = teacherusername;
     let post_grades = data.courses;
     let result = await post_grades.postgrades(teacherusername,bodydata);

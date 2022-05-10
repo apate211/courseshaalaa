@@ -51,14 +51,17 @@ router.get('/',async function(req,res){                 // when ever the login t
 })
 
 router.get('/profile', async function(req, res) {
-    let username = req.session.user.username; 
+    let username = req.session.user.Username; 
     let usersData = data.users;
+    console.log("1")
+    console.log(usersData)
+    console.log("2")
+    console.log(username);
     let userDetails = await usersData.findUserByUsername(username);
     userDetails['isStudent'] = userDetails.usertype == 'student'
     userDetails['isTeacher'] = userDetails.usertype == 'teacher'
     res.render("./mainpage/profile", {userDetails: userDetails});
 });
-
 router.get('/createcourse', async function(req,res){
     res.render("./mainpage/createcourse",{navbar:true})
 })

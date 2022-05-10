@@ -19,8 +19,8 @@
     "express-handlebars": "^6.0.5",
     "express-session": "^1.17.2",
     "fs": "^0.0.1-security",
+    "i": "^0.3.7",
     "mongodb": "^4.5.0",
-    "nodemon": "^2.0.16",
-    "xss": "^1.0.11"
+    "nodemon": "^2.0.16"
   }
 }

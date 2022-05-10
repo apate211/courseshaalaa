@@ -2,13 +2,16 @@ const mongoCollections = require('../config/mongoCollections');
 const users = mongoCollections.users;
 const courses = mongoCollections.courses;
 const studentcourses =mongoCollections.studentcourses;
-const enrolledcourses = mongoCollections.studentcourses;
 const { ObjectId } = require('mongodb');
 const upload = require('express-fileupload');
 const { dropdowndata } = require('../config/mongoCollections');
 
-
-
+const getCourseByNameAndCourse = async(courseName, username) => {
+    const courses = await courseCollection();
+    const course = await courses.findOne({$and:[{username: username}, {coursename: courseName}]})
+    //console.log('Course: ',course)
+    return course;
+}
 
 const getAssigmentById = async(id) => {
     const assignments = await assignmentCollection();

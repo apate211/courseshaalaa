@@ -75,9 +75,10 @@ router.get("/", async function (req, res, next) {
 
 
 router.get('/enrolled/:id', async (req, res) => {
-  const stud = req.session.user.username;
     const id = req.params.id;
     let courses = data.studentcourses
+    const stud = req.session.user.username;
+
     // const username=req.session.user.username
   //  console.log('here22')
     //const username = 'aniket2499'
@@ -176,41 +177,6 @@ router.get('/not_enrolled/:id', async (req, res) => {
   res.render('mainpage/notenrolledcourse', {course: enrolledCourse});
 });
 
-// router.get('/videos/:id/:index', async(req, res) => {
-//   const id = req.params.id;
-//   const index = req.params.index;
-//   const enrolledCourse = await enrolledData.getEnrolledCourseById(id);
-//   const curSeq = enrolledCourse.videos;
-//   const showButton = index-1 == curSeq;
-//   const coursename = enrolledCourse.course_name;
-//   const teacher = enrolledCourse.teacher;
-//   const course = await enrolledData.getCourseByNameAndCourse(coursename, teacher);
-//   const curVideo = course.videos[index-1];
-//   const len = course.videos.length;
-//   res.render('course/video', {enrolledCourseId: id, seq: curSeq, showButton: showButton, 
-//     curVideo: curVideo, index: index, coursename: coursename, len: len})
-// });
-
-// router.post('/videoCompleted', async function(req,res){
-//   console.log('button clicked')
-//   let dt = req.body.btnn;
-//   let vals = dt.split('#')
-//   let enrolledCourseId = vals[0]
-//   let curSeq = +vals[1]
-//   let len = +vals[2]
-//   curSeq = curSeq + 1
-//   console.log('Reached here')
-//   try {
-//     if(curSeq <= len) {
-//       await enrolledData.updateVideoSequenceByUserAndCourse(enrolledCourseId, curSeq);
-//     }   
-//   }
-//   catch(e) {
-//     console.log('Unable to update')
-//   }
-//  res.redirect('/student/enrolled/'+enrolledCourseId)
-// });
-
 
 router.get('/enrollthestudent/:id', async(req,res)=>{
   const id  = req.params.id;
@@ -283,7 +249,7 @@ router.post('/uploadassignment',async(req,res)=>{           // when the teacher 
 
   let result; 
   try{ 
-      result = await uploadassignment.adduploadedassignment(transferdata)
+      // result = await uploadassignment.adduploadedassignment(transferdata)
   }catch(e){
       throw e;
   }
@@ -306,62 +272,22 @@ router.get('/assignmentssubmission/:id', async(req,res)=>{
 
 })
 
-router.post('/uploadassignment',async(req,res)=>{           // when the teacher press upload video button this post method is called.
-    let filedata = req.files.video;
-    let filename = req.files.video.name;
 
-    let username = req.session.user.username;
-    // let username = 'user3'
-    let coursename = decodeURI(req.body.coursename);
-    let videotitle = decodeURI(req.body.videotitle);
-    let sequencenumber = decodeURI(req.body.sequencenumber);
-    let videodescription = decodeURI(req.body.description)
 
-    let initialpath = '/public/uploads/'
+router.get('/ass_sub_bystudents/:teacherusername/:coursename/:id',async(req,res)=>{
+    let teacherusername = req.params.teacherusername;
+    let coursename = req.params.coursename;
+    let id = req.params.id;
 
-    try {
-      if (!fs.existsSync("." + initialpath + username)) {
-        fs.mkdirSync("." + initialpath + username);
-      }
-      if (!fs.existsSync("." + initialpath + username + "/" + coursename)) {
-        fs.mkdirSync("." + initialpath + username + "/" + coursename);
-      }
-      if (!fs.existsSync("." + initialpath + username + "/" + coursename + "/videos")) {
-        fs.mkdirSync("." + initialpath + username + "/" + coursename + "/videos");
-      }
-    } catch (err) {
-      console.error(err);
-    }
+    let uploadassignment = data.studentcourses;
 
-    let finalpath = initialpath + username + "/" + coursename + "/videos/"
-
-    filedata.mv("." + finalpath+filename,function(err){
-        if(err){
-            // return res.json({true: true})
-        }else{
-            // return res.json({true: true})
-        }
-    })
-
-    let transferdata = {
-        studentusername : studentusername,
-        coursename : coursename,
-        teacherusername : teacherusername,
-        path: finalpath + filename
-    }
-
-    
-    let addvideo = data.courses;
-
-    let result 
+    let result; 
     try{ 
-        result = await addvideo.addvideo(transferdata)
+        result = await uploadassignment.finduploadedassignment(teacherusername,coursename,id)
+        console.log(result)
     }catch(e){
         throw e;
     }
-    // testing file names
-
-  return res.json({stat: true})
 })
 
 module.exports=router;
